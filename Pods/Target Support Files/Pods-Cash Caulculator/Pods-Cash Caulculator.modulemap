@@ -1,0 +1,6 @@
+framework module Pods_Cash_Caulculator {
+  umbrella header "Pods-Cash Caulculator-umbrella.h"
+
+  export *
+  module * { export * }
+}

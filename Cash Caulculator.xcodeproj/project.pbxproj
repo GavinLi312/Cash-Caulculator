@@ -1,0 +1,748 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0247498A177CB653130E3B75 /* Pods_Cash_CaulculatorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00795C991E3BE59C076E88B4 /* Pods_Cash_CaulculatorTests.framework */; };
+		8926771A137E94921124C67F /* Pods_Cash_Caulculator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E03A49E6CDB3FC70E2D46BF /* Pods_Cash_Caulculator.framework */; };
+		A38CF174231AC1AB0048B7C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38CF173231AC1AB0048B7C9 /* AppDelegate.swift */; };
+		A38CF176231AC1AB0048B7C9 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38CF175231AC1AB0048B7C9 /* LoadingViewController.swift */; };
+		A38CF17C231AC1AB0048B7C9 /* Cash_Caulculator.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A38CF17A231AC1AB0048B7C9 /* Cash_Caulculator.xcdatamodeld */; };
+		A38CF17E231AC1AD0048B7C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A38CF17D231AC1AD0048B7C9 /* Assets.xcassets */; };
+		A38CF181231AC1AD0048B7C9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A38CF17F231AC1AD0048B7C9 /* LaunchScreen.storyboard */; };
+		A38CF18C231AC1AD0048B7C9 /* Cash_CaulculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38CF18B231AC1AD0048B7C9 /* Cash_CaulculatorTests.swift */; };
+		A38CF197231AC1AD0048B7C9 /* Cash_CaulculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38CF196231AC1AD0048B7C9 /* Cash_CaulculatorUITests.swift */; };
+		A38CF1A5231AC2600048B7C9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A38CF1A4231AC2600048B7C9 /* GoogleService-Info.plist */; };
+		A38CF1A7231AC7650048B7C9 /* FirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38CF1A6231AC7650048B7C9 /* FirebaseHelper.swift */; };
+		A38CF1A9231ACAD20048B7C9 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38CF1A8231ACAD20048B7C9 /* Constant.swift */; };
+		A38CF1AB231B31A90048B7C9 /* CashCaulculatorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38CF1AA231B31A90048B7C9 /* CashCaulculatorTableViewController.swift */; };
+		DD5C303792530CCB1569EFA0 /* Pods_Cash_CaulculatorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF088CB280AC381011CB3EC3 /* Pods_Cash_CaulculatorUITests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A38CF188231AC1AD0048B7C9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A38CF168231AC1AB0048B7C9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A38CF16F231AC1AB0048B7C9;
+			remoteInfo = "Cash Caulculator";
+		};
+		A38CF193231AC1AD0048B7C9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A38CF168231AC1AB0048B7C9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A38CF16F231AC1AB0048B7C9;
+			remoteInfo = "Cash Caulculator";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		00795C991E3BE59C076E88B4 /* Pods_Cash_CaulculatorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cash_CaulculatorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		063510D7FB209680E7B804D5 /* Pods-Cash CaulculatorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cash CaulculatorTests.release.xcconfig"; path = "Target Support Files/Pods-Cash CaulculatorTests/Pods-Cash CaulculatorTests.release.xcconfig"; sourceTree = "<group>"; };
+		0BBB97655972B40C014468D4 /* Pods-Cash CaulculatorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cash CaulculatorTests.debug.xcconfig"; path = "Target Support Files/Pods-Cash CaulculatorTests/Pods-Cash CaulculatorTests.debug.xcconfig"; sourceTree = "<group>"; };
+		1FD616567F6273AD183C4B7B /* Pods-Cash CaulculatorUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cash CaulculatorUITests.release.xcconfig"; path = "Target Support Files/Pods-Cash CaulculatorUITests/Pods-Cash CaulculatorUITests.release.xcconfig"; sourceTree = "<group>"; };
+		2802360311718FCCE25B68A8 /* Pods-Cash Caulculator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cash Caulculator.debug.xcconfig"; path = "Target Support Files/Pods-Cash Caulculator/Pods-Cash Caulculator.debug.xcconfig"; sourceTree = "<group>"; };
+		69671DFE6D6EB0089F079238 /* Pods-Cash CaulculatorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cash CaulculatorUITests.debug.xcconfig"; path = "Target Support Files/Pods-Cash CaulculatorUITests/Pods-Cash CaulculatorUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		8E03A49E6CDB3FC70E2D46BF /* Pods_Cash_Caulculator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cash_Caulculator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A38CF170231AC1AB0048B7C9 /* Cash Caulculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cash Caulculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A38CF173231AC1AB0048B7C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A38CF175231AC1AB0048B7C9 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		A38CF17B231AC1AB0048B7C9 /* Cash_Caulculator.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Cash_Caulculator.xcdatamodel; sourceTree = "<group>"; };
+		A38CF17D231AC1AD0048B7C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A38CF180231AC1AD0048B7C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A38CF182231AC1AD0048B7C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A38CF187231AC1AD0048B7C9 /* Cash CaulculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Cash CaulculatorTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A38CF18B231AC1AD0048B7C9 /* Cash_CaulculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cash_CaulculatorTests.swift; sourceTree = "<group>"; };
+		A38CF18D231AC1AD0048B7C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A38CF192231AC1AD0048B7C9 /* Cash CaulculatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Cash CaulculatorUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A38CF196231AC1AD0048B7C9 /* Cash_CaulculatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cash_CaulculatorUITests.swift; sourceTree = "<group>"; };
+		A38CF198231AC1AD0048B7C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A38CF1A4231AC2600048B7C9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A38CF1A6231AC7650048B7C9 /* FirebaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseHelper.swift; sourceTree = "<group>"; };
+		A38CF1A8231ACAD20048B7C9 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		A38CF1AA231B31A90048B7C9 /* CashCaulculatorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashCaulculatorTableViewController.swift; sourceTree = "<group>"; };
+		BF088CB280AC381011CB3EC3 /* Pods_Cash_CaulculatorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cash_CaulculatorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E846720F57D5A10325CA3D47 /* Pods-Cash Caulculator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cash Caulculator.release.xcconfig"; path = "Target Support Files/Pods-Cash Caulculator/Pods-Cash Caulculator.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A38CF16D231AC1AB0048B7C9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8926771A137E94921124C67F /* Pods_Cash_Caulculator.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A38CF184231AC1AD0048B7C9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0247498A177CB653130E3B75 /* Pods_Cash_CaulculatorTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A38CF18F231AC1AD0048B7C9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD5C303792530CCB1569EFA0 /* Pods_Cash_CaulculatorUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		76068CB882B2BB304F93CEEA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2802360311718FCCE25B68A8 /* Pods-Cash Caulculator.debug.xcconfig */,
+				E846720F57D5A10325CA3D47 /* Pods-Cash Caulculator.release.xcconfig */,
+				0BBB97655972B40C014468D4 /* Pods-Cash CaulculatorTests.debug.xcconfig */,
+				063510D7FB209680E7B804D5 /* Pods-Cash CaulculatorTests.release.xcconfig */,
+				69671DFE6D6EB0089F079238 /* Pods-Cash CaulculatorUITests.debug.xcconfig */,
+				1FD616567F6273AD183C4B7B /* Pods-Cash CaulculatorUITests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		7A1BA2EA4E0C8ED17889C0D8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8E03A49E6CDB3FC70E2D46BF /* Pods_Cash_Caulculator.framework */,
+				00795C991E3BE59C076E88B4 /* Pods_Cash_CaulculatorTests.framework */,
+				BF088CB280AC381011CB3EC3 /* Pods_Cash_CaulculatorUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A38CF167231AC1AB0048B7C9 = {
+			isa = PBXGroup;
+			children = (
+				A38CF172231AC1AB0048B7C9 /* Cash Caulculator */,
+				A38CF18A231AC1AD0048B7C9 /* Cash CaulculatorTests */,
+				A38CF195231AC1AD0048B7C9 /* Cash CaulculatorUITests */,
+				A38CF171231AC1AB0048B7C9 /* Products */,
+				76068CB882B2BB304F93CEEA /* Pods */,
+				7A1BA2EA4E0C8ED17889C0D8 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		A38CF171231AC1AB0048B7C9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A38CF170231AC1AB0048B7C9 /* Cash Caulculator.app */,
+				A38CF187231AC1AD0048B7C9 /* Cash CaulculatorTests.xctest */,
+				A38CF192231AC1AD0048B7C9 /* Cash CaulculatorUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A38CF172231AC1AB0048B7C9 /* Cash Caulculator */ = {
+			isa = PBXGroup;
+			children = (
+				A38CF173231AC1AB0048B7C9 /* AppDelegate.swift */,
+				A38CF175231AC1AB0048B7C9 /* LoadingViewController.swift */,
+				A38CF17D231AC1AD0048B7C9 /* Assets.xcassets */,
+				A38CF17F231AC1AD0048B7C9 /* LaunchScreen.storyboard */,
+				A38CF182231AC1AD0048B7C9 /* Info.plist */,
+				A38CF1A4231AC2600048B7C9 /* GoogleService-Info.plist */,
+				A38CF17A231AC1AB0048B7C9 /* Cash_Caulculator.xcdatamodeld */,
+				A38CF1A6231AC7650048B7C9 /* FirebaseHelper.swift */,
+				A38CF1A8231ACAD20048B7C9 /* Constant.swift */,
+				A38CF1AA231B31A90048B7C9 /* CashCaulculatorTableViewController.swift */,
+			);
+			path = "Cash Caulculator";
+			sourceTree = "<group>";
+		};
+		A38CF18A231AC1AD0048B7C9 /* Cash CaulculatorTests */ = {
+			isa = PBXGroup;
+			children = (
+				A38CF18B231AC1AD0048B7C9 /* Cash_CaulculatorTests.swift */,
+				A38CF18D231AC1AD0048B7C9 /* Info.plist */,
+			);
+			path = "Cash CaulculatorTests";
+			sourceTree = "<group>";
+		};
+		A38CF195231AC1AD0048B7C9 /* Cash CaulculatorUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A38CF196231AC1AD0048B7C9 /* Cash_CaulculatorUITests.swift */,
+				A38CF198231AC1AD0048B7C9 /* Info.plist */,
+			);
+			path = "Cash CaulculatorUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A38CF16F231AC1AB0048B7C9 /* Cash Caulculator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A38CF19B231AC1AD0048B7C9 /* Build configuration list for PBXNativeTarget "Cash Caulculator" */;
+			buildPhases = (
+				7B7C3DB241D9C572CBA23176 /* [CP] Check Pods Manifest.lock */,
+				A38CF16C231AC1AB0048B7C9 /* Sources */,
+				A38CF16D231AC1AB0048B7C9 /* Frameworks */,
+				A38CF16E231AC1AB0048B7C9 /* Resources */,
+				A279344F6953D39D1348BEAC /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Cash Caulculator";
+			productName = "Cash Caulculator";
+			productReference = A38CF170231AC1AB0048B7C9 /* Cash Caulculator.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A38CF186231AC1AD0048B7C9 /* Cash CaulculatorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A38CF19E231AC1AD0048B7C9 /* Build configuration list for PBXNativeTarget "Cash CaulculatorTests" */;
+			buildPhases = (
+				8C3739F0AEF1E4A591BB6851 /* [CP] Check Pods Manifest.lock */,
+				A38CF183231AC1AD0048B7C9 /* Sources */,
+				A38CF184231AC1AD0048B7C9 /* Frameworks */,
+				A38CF185231AC1AD0048B7C9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A38CF189231AC1AD0048B7C9 /* PBXTargetDependency */,
+			);
+			name = "Cash CaulculatorTests";
+			productName = "Cash CaulculatorTests";
+			productReference = A38CF187231AC1AD0048B7C9 /* Cash CaulculatorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A38CF191231AC1AD0048B7C9 /* Cash CaulculatorUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A38CF1A1231AC1AD0048B7C9 /* Build configuration list for PBXNativeTarget "Cash CaulculatorUITests" */;
+			buildPhases = (
+				CA460226CA5172FC18D18AD9 /* [CP] Check Pods Manifest.lock */,
+				A38CF18E231AC1AD0048B7C9 /* Sources */,
+				A38CF18F231AC1AD0048B7C9 /* Frameworks */,
+				A38CF190231AC1AD0048B7C9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A38CF194231AC1AD0048B7C9 /* PBXTargetDependency */,
+			);
+			name = "Cash CaulculatorUITests";
+			productName = "Cash CaulculatorUITests";
+			productReference = A38CF192231AC1AD0048B7C9 /* Cash CaulculatorUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A38CF168231AC1AB0048B7C9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1030;
+				LastUpgradeCheck = 1030;
+				ORGANIZATIONNAME = "Salamender Li";
+				TargetAttributes = {
+					A38CF16F231AC1AB0048B7C9 = {
+						CreatedOnToolsVersion = 10.3;
+					};
+					A38CF186231AC1AD0048B7C9 = {
+						CreatedOnToolsVersion = 10.3;
+						TestTargetID = A38CF16F231AC1AB0048B7C9;
+					};
+					A38CF191231AC1AD0048B7C9 = {
+						CreatedOnToolsVersion = 10.3;
+						TestTargetID = A38CF16F231AC1AB0048B7C9;
+					};
+				};
+			};
+			buildConfigurationList = A38CF16B231AC1AB0048B7C9 /* Build configuration list for PBXProject "Cash Caulculator" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A38CF167231AC1AB0048B7C9;
+			productRefGroup = A38CF171231AC1AB0048B7C9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A38CF16F231AC1AB0048B7C9 /* Cash Caulculator */,
+				A38CF186231AC1AD0048B7C9 /* Cash CaulculatorTests */,
+				A38CF191231AC1AD0048B7C9 /* Cash CaulculatorUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A38CF16E231AC1AB0048B7C9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A38CF181231AC1AD0048B7C9 /* LaunchScreen.storyboard in Resources */,
+				A38CF17E231AC1AD0048B7C9 /* Assets.xcassets in Resources */,
+				A38CF1A5231AC2600048B7C9 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A38CF185231AC1AD0048B7C9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A38CF190231AC1AD0048B7C9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7B7C3DB241D9C572CBA23176 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Cash Caulculator-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8C3739F0AEF1E4A591BB6851 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Cash CaulculatorTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A279344F6953D39D1348BEAC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Cash Caulculator/Pods-Cash Caulculator-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Cash Caulculator/Pods-Cash Caulculator-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Cash Caulculator/Pods-Cash Caulculator-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CA460226CA5172FC18D18AD9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Cash CaulculatorUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A38CF16C231AC1AB0048B7C9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A38CF1A7231AC7650048B7C9 /* FirebaseHelper.swift in Sources */,
+				A38CF1AB231B31A90048B7C9 /* CashCaulculatorTableViewController.swift in Sources */,
+				A38CF176231AC1AB0048B7C9 /* LoadingViewController.swift in Sources */,
+				A38CF1A9231ACAD20048B7C9 /* Constant.swift in Sources */,
+				A38CF17C231AC1AB0048B7C9 /* Cash_Caulculator.xcdatamodeld in Sources */,
+				A38CF174231AC1AB0048B7C9 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A38CF183231AC1AD0048B7C9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A38CF18C231AC1AD0048B7C9 /* Cash_CaulculatorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A38CF18E231AC1AD0048B7C9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A38CF197231AC1AD0048B7C9 /* Cash_CaulculatorUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A38CF189231AC1AD0048B7C9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A38CF16F231AC1AB0048B7C9 /* Cash Caulculator */;
+			targetProxy = A38CF188231AC1AD0048B7C9 /* PBXContainerItemProxy */;
+		};
+		A38CF194231AC1AD0048B7C9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A38CF16F231AC1AB0048B7C9 /* Cash Caulculator */;
+			targetProxy = A38CF193231AC1AD0048B7C9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A38CF17F231AC1AD0048B7C9 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A38CF180231AC1AD0048B7C9 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A38CF199231AC1AD0048B7C9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A38CF19A231AC1AD0048B7C9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A38CF19C231AC1AD0048B7C9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2802360311718FCCE25B68A8 /* Pods-Cash Caulculator.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NRL9LH8W6N;
+				INFOPLIST_FILE = "Cash Caulculator/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "GavinAndMichelle.Cash-Caulculator";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A38CF19D231AC1AD0048B7C9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E846720F57D5A10325CA3D47 /* Pods-Cash Caulculator.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NRL9LH8W6N;
+				INFOPLIST_FILE = "Cash Caulculator/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "GavinAndMichelle.Cash-Caulculator";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A38CF19F231AC1AD0048B7C9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0BBB97655972B40C014468D4 /* Pods-Cash CaulculatorTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NRL9LH8W6N;
+				INFOPLIST_FILE = "Cash CaulculatorTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "GavinAndMichelle.Cash-CaulculatorTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cash Caulculator.app/Cash Caulculator";
+			};
+			name = Debug;
+		};
+		A38CF1A0231AC1AD0048B7C9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 063510D7FB209680E7B804D5 /* Pods-Cash CaulculatorTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NRL9LH8W6N;
+				INFOPLIST_FILE = "Cash CaulculatorTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "GavinAndMichelle.Cash-CaulculatorTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cash Caulculator.app/Cash Caulculator";
+			};
+			name = Release;
+		};
+		A38CF1A2231AC1AD0048B7C9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 69671DFE6D6EB0089F079238 /* Pods-Cash CaulculatorUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NRL9LH8W6N;
+				INFOPLIST_FILE = "Cash CaulculatorUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "GavinAndMichelle.Cash-CaulculatorUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Cash Caulculator";
+			};
+			name = Debug;
+		};
+		A38CF1A3231AC1AD0048B7C9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1FD616567F6273AD183C4B7B /* Pods-Cash CaulculatorUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NRL9LH8W6N;
+				INFOPLIST_FILE = "Cash CaulculatorUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "GavinAndMichelle.Cash-CaulculatorUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Cash Caulculator";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A38CF16B231AC1AB0048B7C9 /* Build configuration list for PBXProject "Cash Caulculator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A38CF199231AC1AD0048B7C9 /* Debug */,
+				A38CF19A231AC1AD0048B7C9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A38CF19B231AC1AD0048B7C9 /* Build configuration list for PBXNativeTarget "Cash Caulculator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A38CF19C231AC1AD0048B7C9 /* Debug */,
+				A38CF19D231AC1AD0048B7C9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A38CF19E231AC1AD0048B7C9 /* Build configuration list for PBXNativeTarget "Cash CaulculatorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A38CF19F231AC1AD0048B7C9 /* Debug */,
+				A38CF1A0231AC1AD0048B7C9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A38CF1A1231AC1AD0048B7C9 /* Build configuration list for PBXNativeTarget "Cash CaulculatorUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A38CF1A2231AC1AD0048B7C9 /* Debug */,
+				A38CF1A3231AC1AD0048B7C9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A38CF17A231AC1AB0048B7C9 /* Cash_Caulculator.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A38CF17B231AC1AB0048B7C9 /* Cash_Caulculator.xcdatamodel */,
+			);
+			currentVersion = A38CF17B231AC1AB0048B7C9 /* Cash_Caulculator.xcdatamodel */;
+			path = Cash_Caulculator.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = A38CF168231AC1AB0048B7C9 /* Project object */;
+}

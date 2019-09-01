@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>877967639939-hjpicdblgenjp1q3l1ec14n1cfqe0poa.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.877967639939-hjpicdblgenjp1q3l1ec14n1cfqe0poa</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDUiSPOd7nwqdCn4MRHJ9E567QVoL-u058</string>
+	<key>GCM_SENDER_ID</key>
+	<string>877967639939</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>GavinAndMichelle.Cash-Caulculator</string>
+	<key>PROJECT_ID</key>
+	<string>cash-caulculator</string>
+	<key>STORAGE_BUCKET</key>
+	<string>cash-caulculator.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:877967639939:ios:2b0614f9b6ecb01b</string>
+	<key>DATABASE_URL</key>
+	<string>https://cash-caulculator.firebaseio.com</string>
+</dict>
+</plist>
