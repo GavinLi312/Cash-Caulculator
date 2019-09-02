@@ -28,6 +28,7 @@ class ChangeCurrencyTableViewController : UITableViewController,UISearchResultsU
     let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
+        self.navigationItem.title = "Currency"
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()

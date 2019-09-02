@@ -228,15 +228,11 @@ class CashCaulculatorTableViewController: UITableViewController,UITextFieldDeleg
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-
-
         
         guard let superview = textField.superview?.superview as? CashCaulculatorCell else {
             print("error")
             return true
         }
-        
-        print(range,range.length,range.location)
         
         var text : String?
         switch range.length {
@@ -252,6 +248,10 @@ class CashCaulculatorTableViewController: UITableViewController,UITextFieldDeleg
 
         if text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
             text = "0"
+        }
+        
+        if text!.count >= 6{
+            return false
         }
         
         guard let _ = Double(text!) else {
@@ -283,10 +283,19 @@ class CashCaulculatorTableViewController: UITableViewController,UITextFieldDeleg
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         
+        if textField.text?.trimmingCharacters(in: .whitespacesAndNewlines) != ""{
+            guard let num = Int(textField.text!) else { return}
+            if num == 0{
+                textField.text = ""
+            }else{
+                textField.text = "\(num)"
+            }
+        }
         guard let section = self.findTextFieldIndexPath(textField: textField as! CashCaulculatorTextField)?.section else{
             print("Error")
             return
         }
+        
         var result = 0.0
         let numberOfRows =  tableView.numberOfRows(inSection: section)
         for i in 0...numberOfRows - 1{
