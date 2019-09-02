@@ -39,12 +39,10 @@ class LoadingViewController: UIViewController, firebaseLoadingFinish{
        activityIndicator.stopAnimating()
         let country = readUserDefaultCountry()
         let caulculatorViewController = CashCaulculatorTableViewController()
-        
-        
+
         let currency = firebaseHelper.countriesCurrency?.filter({
             $0.countryName == country
         })
-        
         caulculatorViewController.country = country
         caulculatorViewController.countryCurrency = currency?.first
         caulculatorViewController.countryCurrencies = firebaseHelper.countriesCurrency
@@ -62,8 +60,6 @@ class LoadingViewController: UIViewController, firebaseLoadingFinish{
             return Constant.defaultCountry
         }
     }
-
-
 
 }
 

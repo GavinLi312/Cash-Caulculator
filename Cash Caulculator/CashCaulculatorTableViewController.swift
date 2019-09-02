@@ -8,7 +8,15 @@
 
 import Foundation
 import UIKit
-class CashCaulculatorTableViewController: UITableViewController,UITextFieldDelegate{
+
+class myBarButtonItem: UIBarButtonItem {
+    var passedUITextField:UITextField?
+}
+
+
+
+class CashCaulculatorTableViewController: UITableViewController,UITextFieldDelegate,NewCountrySelected{
+
     
     var country: String?
     
@@ -16,21 +24,37 @@ class CashCaulculatorTableViewController: UITableViewController,UITextFieldDeleg
     
     var countryCurrencies: [CountryCurrency]?
     
+    lazy var sectionHeaderViews : [Int:HeaderView] = [:]
+    
+    lazy var cashCaulculatorcells : [IndexPath: CashCaulculatorCell] = [:]
+    
     override func viewDidLoad() {
         self.view.backgroundColor = UIColor.white
         self.tableView.sectionHeaderHeight = 50
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.tableFooterView = UIView()
+        let tableFooterView = TableFooterView(frame: CGRect(x: 0, y: 0, width: 0, height: 50))
+        tableFooterView.settotalValue(sign: self.countryCurrency!.sign, value: 0.0)
+        tableView.tableFooterView = tableFooterView
         tableView.register(CashCaulculatorCell.self, forCellReuseIdentifier: Constant.cashCaulculatorTableViewforCellReuseIdentifier)
+        tableView.register(HeaderView.self, forHeaderFooterViewReuseIdentifier: Constant.cashCaulculatorTableViewforFooterReuseIdentifier)
+        tableView.allowsSelection = false
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        setNavigationControllerTitle(title: countryCurrency!.code)
+        setNavigationControllerTitle(title: countryCurrency!.countryName)
+        setNavigationItem()
     }
     
     func setNavigationControllerTitle(title: String){
         self.navigationItem.title = title
+    }
+    
+    func setNavigationItem(){
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelPressed(sender:)))
+        let changeCurrencyButton = UIBarButtonItem(title: countryCurrency?.code, style: .plain, target: self, action: #selector(changeCurrency(sender:)))
+        self.navigationItem.setRightBarButton(cancelButton, animated: false)
+        self.navigationItem.setLeftBarButton(changeCurrencyButton, animated: false)
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -49,18 +73,6 @@ class CashCaulculatorTableViewController: UITableViewController,UITextFieldDeleg
         }
     }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case 0:
-            return Constant.bankNoteValueKey
-        case 1:
-            return Constant.coinValueKey
-        default:
-            print("should not happen ")
-            return ""
-        }
-    }
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         switch indexPath.section {
@@ -68,39 +80,226 @@ class CashCaulculatorTableViewController: UITableViewController,UITextFieldDeleg
             let cell = tableView.dequeueReusableCell(withIdentifier: Constant.cashCaulculatorTableViewforCellReuseIdentifier, for: indexPath) as! CashCaulculatorCell
             cell.sign = countryCurrency?.bankNoteSign
             cell.cellValue = Double((countryCurrency?.bankNoteValue[indexPath.row])!)
+            
+            if cell.result == nil{
+                cell.result = 0
+            }
             cell.noteNumberTextField.delegate = self
+            self.cashCaulculatorcells[indexPath] = cell
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: Constant.cashCaulculatorTableViewforCellReuseIdentifier, for: indexPath) as! CashCaulculatorCell
             cell.sign = countryCurrency?.coinSign
             cell.cellValue = countryCurrency?.coinValue[indexPath.row]
+            
+            if cell.result == nil{
+                cell.result = 0
+            }
+            self.cashCaulculatorcells[indexPath] = cell
             cell.noteNumberTextField.delegate = self
             return cell
         default:
             print("Should not happen")
             return tableView.dequeueReusableCell(withIdentifier: Constant.cashCaulculatorTableViewforCellReuseIdentifier, for: indexPath)
         }
-        
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
     
+    func createToolBar(textField:UITextField){
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        let done = myBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(donePressed(sender:)))
+        let previous =  myBarButtonItem(title: "Prev", style: .plain, target: self, action: #selector(previousPressed(sender:)))
+        //(barButtonSystemItem: , target: self, action: #selector(cancelPressed))
+        previous.passedUITextField = textField
+        let next =  myBarButtonItem(title: "Next", style: .plain, target: self, action:  #selector(nextPressed(sender:)))
+        next.passedUITextField = textField
+        
+        let space =  myBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        done.passedUITextField = textField
+        toolbar.setItems([previous,next,space,done],animated:false)
+        textField.inputAccessoryView = toolbar
+    }
+    
+    @objc func donePressed(sender:myBarButtonItem){
+        textFieldDidEndEditing(sender.passedUITextField!)
+        textFieldShouldReturn(sender.passedUITextField!)
+    }
+    
+    @objc func cancelPressed(sender:myBarButtonItem?){
+        for cell in cashCaulculatorcells.values{
+            cell.noteNumberTextField.text  = ""
+            cell.result = 0.0
+        }
+        for i in 0...tableView.numberOfSections-1{
+            setfooterViewValue(i, 0)
+        }
+        setTableFooterViewValue()
+    }
+    
+    @objc func previousPressed(sender:myBarButtonItem){
+        let indexpath = self.findTextFieldIndexPath(textField: sender.passedUITextField as! CashCaulculatorTextField)
+        guard let previousIndexPath = findPreviousIndexPath(indexpath: indexpath!) else{
+            return
+        }
+        let previousCell = self.cashCaulculatorcells[previousIndexPath]
+        textFieldDidEndEditing(sender.passedUITextField!)
+        textFieldShouldReturn(sender.passedUITextField!)
+        previousCell?.noteNumberTextField.becomeFirstResponder()
+        tableView.selectRow(at: previousIndexPath, animated: true, scrollPosition: .none)
+    }
+    
+    @objc func changeCurrency(sender:UIBarButtonItem) {
+        
+        let viewcontroller = ChangeCurrencyTableViewController()
+        viewcontroller.countryCurrencies = self.countryCurrencies?.sorted(by: {
+            $0.countryName < $1.countryName
+        })
+        
+        viewcontroller.newCountry = self
+        navigationController?.pushViewController(viewcontroller, animated: true)
+    }
+    
+    
+    func findPreviousIndexPath(indexpath:IndexPath) -> IndexPath?{
+        var indexpathSet = cashCaulculatorcells.keys.sorted {
+            if $0.section != $1.section{
+                return $0.section < $1.section
+            }else{
+                return $0.row < $1.row
+            }
+        }
+        if indexpath == indexpathSet.first{
+            return nil
+        }else{
+            let previousIndexPath = indexpathSet[indexpathSet.firstIndex(of: indexpath)! - 1]
+            return previousIndexPath
+        }
+    }
+    
+    func findNextIndexPath(indexpath:IndexPath) -> IndexPath?{
+        var indexpathSet = cashCaulculatorcells.keys.sorted {
+            if $0.section != $1.section{
+                return $0.section < $1.section
+            }else{
+                return $0.row < $1.row
+            }
+        }
+        if indexpath == indexpathSet.last{
+            return nil
+        }else{
+            let previousIndexPath = indexpathSet[indexpathSet.firstIndex(of: indexpath)! + 1]
+            return previousIndexPath
+        }
+    }
+    
+    @objc func nextPressed(sender:myBarButtonItem) {
+        let indexpath = self.findTextFieldIndexPath(textField: sender.passedUITextField as! CashCaulculatorTextField)
+        guard let nextIndexPath = findNextIndexPath(indexpath: indexpath!) else{
+            return
+        }
+        let nextCell = self.cashCaulculatorcells[nextIndexPath]
+        textFieldDidEndEditing(sender.passedUITextField!)
+        textFieldShouldReturn(sender.passedUITextField!)
+        nextCell?.noteNumberTextField.becomeFirstResponder()
+    }
+    
+    func findTextFieldIndexPath(textField:CashCaulculatorTextField) -> IndexPath?{
+        guard let superview = textField.superview?.superview as? CashCaulculatorCell else {
+            print("Error")
+            return nil
+        }
+        
+        guard let indexpath = tableView.indexPath(for: superview) else{
+            print("error")
+            return nil
+        }
+        
+        return indexpath
+    }
+    
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        createToolBar(textField: textField)
+        return true
+    }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 
+
+        
         guard let superview = textField.superview?.superview as? CashCaulculatorCell else {
             print("error")
             return true
         }
-//        let value =  as? Double
-//        guard let value = superview.cellValue as? Double else {
-//            print("error")
-//            return true
-//        }
-        superview.Result = (Double("\(textField.text!)\(string)")!) * superview.cellValue!
-        print("\(textField.text!)\(string)")
+        
+        print(range,range.length,range.location)
+        
+        var text : String?
+        switch range.length {
+        case 0:
+            text = "\(textField.text!)\(string)"
+        case 1:
+            var temp = textField.text
+            temp?.popLast()
+            text = temp
+        default:
+            print("should not happen")
+        }
+
+        if text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
+            text = "0"
+        }
+        
+        guard let _ = Double(text!) else {
+            print("error")
+            return false
+        }
+        
+        superview.result = (round((Double(text!)!) * superview.cellValue!*100)/100)
         return true
+    }
+    
+    fileprivate func setfooterViewValue(_ section: Int, _ result: Double) {
+        // tableView
+        let footerView = tableView.headerView(forSection: section) as! HeaderView
+        footerView.settotalValue(sign: countryCurrency!.sign, value: result)
+    }
+    
+    func setTableFooterViewValue(){
+        var totalResult = 0.0
+        for view in sectionHeaderViews.values{
+            totalResult += view.value!
+        }
+        guard let tableFooterView = tableView.tableFooterView as? TableFooterView else {
+            print("error")
+            return
+        }
+        tableFooterView.settotalValue(sign: countryCurrency!.sign, value: totalResult)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        guard let section = self.findTextFieldIndexPath(textField: textField as! CashCaulculatorTextField)?.section else{
+            print("Error")
+            return
+        }
+        var result = 0.0
+        let numberOfRows =  tableView.numberOfRows(inSection: section)
+        for i in 0...numberOfRows - 1{
+            let indexpath = IndexPath(row: i, section: section)
+            guard let counterCell = tableView.cellForRow(at: indexpath) as? CashCaulculatorCell else {
+                print("error")
+                return
+            }
+            result += counterCell.result!
+        }
+        setfooterViewValue(section, result)
+        setTableFooterViewValue()
+
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -108,126 +307,57 @@ class CashCaulculatorTableViewController: UITableViewController,UITextFieldDeleg
         return true
     }
     
-}
-
-class CashCaulculatorCell: UITableViewCell{
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: Constant.cashCaulculatorTableViewforFooterReuseIdentifier) as! HeaderView
+        sectionHeaderViews[section] = headerView
+        
+        if headerView.value == nil{
+            headerView.settotalValue(sign: countryCurrency!.sign, value: 0)
+        }
+        switch section {
+        case 0:
+            headerView.setTitle(title: Constant.bankNoteSignKey)
+        case 1:
+            headerView.setTitle(title: Constant.coinSignKey)
+        default:
+            print("Should not happen")
+        }
+        return headerView
+    }
+    
 
     
-    var signLabel : CashCaulculatorLabel = {
-        var label = CashCaulculatorLabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = NSTextAlignment.right
-        return label
-    }()
-
-    var sign:String?
-    
-    var cellValue : Double?{
-        didSet{
-            changeSignLabel(sign: self.sign!, value: cellValue!)
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let cellView = cell as! CashCaulculatorCell
+        if cellView.noteNumberTextField.text == ""{
+            cellView.result = 0.0
+        }else{
+            cellView.result = (cellView.cellValue!) * Double(cellView.noteNumberTextField.text!)!
         }
     }
     
-    var Result : Double?{
-        didSet{
-            changeResultLabel(sign: self.sign!, value: Result!)
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let cellView = cell as! CashCaulculatorCell
+        if cellView.noteNumberTextField.isEditing{
+            textFieldDidEndEditing(cellView.noteNumberTextField)
+            textFieldShouldReturn(cellView.noteNumberTextField)
         }
     }
     
-    var noteNumberTextField : CashCaulculatorTextField = {
-        var textField = CashCaulculatorTextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.text = ""
-        return textField
-    }()
-    
-    
-    var resultLabel : CashCaulculatorLabel = {
-        var label = CashCaulculatorLabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "= 0"
-        return label
-    }()
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        addviews()
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 50
     }
     
-    func addviews(){
-        self.contentView.addSubview(signLabel)
-        self.contentView.addSubview(noteNumberTextField)
-        
-        self.contentView.addSubview(resultLabel)
-        
-        contentView.addConstraintsWithFormat(format: "H:|-8-[v0(v2)]-8-[v1(150)]-8-[v2]-8-|", views: signLabel,noteNumberTextField,resultLabel)
-        contentView.addConstraintsWithFormat(format: "V:|-2-[v0]-2-|", views: signLabel)
-        contentView.addConstraintsWithFormat(format: "V:|-2-[v0]-2-|", views: noteNumberTextField)
-        contentView.addConstraintsWithFormat(format: "V:|-2-[v0]-2-|", views: resultLabel)
-    }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    func newCountrySelected(countryCurrency: CountryCurrency) {
+        self.countryCurrency = countryCurrency
+        let userDefault = UserDefaults()
+        userDefault.setValue(countryCurrency.countryName, forKey: Constant.userDefaultKey)
+        cancelPressed(sender:nil )
+        tableView.reloadData()
     }
-
-    func changeSignLabel(sign:String, value:Any){
-        signLabel.text = "\(sign)\(value) X"
-    }
-    
-    func changeResultLabel(sign:String,value:Double) {
-        resultLabel.text = "= \(sign)\(value)"
-    }
-    
-//    func textChange(string:String) {
-//        <#code#>
-//    }
-    
-}
-
-
-class CashCaulculatorLabel: UILabel {
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.textColor = UIColor.gray
-        self.sizeToFit()
-        
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-}
-
-//protocol textChangeProtocol {
-//    func textChange(string:String)
-//}
-
-class CashCaulculatorTextField: UITextField {
     
 
-    
-    override var text: String?{
-        didSet{
-//            if text != ""{
-//                textChangeProtocol?.textChange(string: text!)
-//            }else{
-//                textChangeProtocol?.textChange(string: "")
-//            }
-        }
-    }
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.layer.cornerRadius = 3
-        self.layer.borderColor = UIColor.gray.cgColor
-        self.layer.borderWidth = 0.5
-        self.textAlignment = NSTextAlignment.center
-        self.keyboardType = .numberPad
-        self.placeholder = "0"
-    }
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 }
 
 
@@ -244,6 +374,5 @@ extension UIView{
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: viewsDictionary))
     }
 }
-
 
 

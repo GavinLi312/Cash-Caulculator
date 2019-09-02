@@ -20,6 +20,8 @@
 		A38CF1A7231AC7650048B7C9 /* FirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38CF1A6231AC7650048B7C9 /* FirebaseHelper.swift */; };
 		A38CF1A9231ACAD20048B7C9 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38CF1A8231ACAD20048B7C9 /* Constant.swift */; };
 		A38CF1AB231B31A90048B7C9 /* CashCaulculatorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38CF1AA231B31A90048B7C9 /* CashCaulculatorTableViewController.swift */; };
+		A38CF1AD231B9DAC0048B7C9 /* CashCaulculatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38CF1AC231B9DAC0048B7C9 /* CashCaulculatorCell.swift */; };
+		A38CF1AF231D02320048B7C9 /* ChangeCurrencyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38CF1AE231D02320048B7C9 /* ChangeCurrencyTableViewController.swift */; };
 		DD5C303792530CCB1569EFA0 /* Pods_Cash_CaulculatorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF088CB280AC381011CB3EC3 /* Pods_Cash_CaulculatorUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +67,8 @@
 		A38CF1A6231AC7650048B7C9 /* FirebaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseHelper.swift; sourceTree = "<group>"; };
 		A38CF1A8231ACAD20048B7C9 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		A38CF1AA231B31A90048B7C9 /* CashCaulculatorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashCaulculatorTableViewController.swift; sourceTree = "<group>"; };
+		A38CF1AC231B9DAC0048B7C9 /* CashCaulculatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashCaulculatorCell.swift; sourceTree = "<group>"; };
+		A38CF1AE231D02320048B7C9 /* ChangeCurrencyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCurrencyTableViewController.swift; sourceTree = "<group>"; };
 		BF088CB280AC381011CB3EC3 /* Pods_Cash_CaulculatorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cash_CaulculatorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E846720F57D5A10325CA3D47 /* Pods-Cash Caulculator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cash Caulculator.release.xcconfig"; path = "Target Support Files/Pods-Cash Caulculator/Pods-Cash Caulculator.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -155,6 +159,8 @@
 				A38CF1A6231AC7650048B7C9 /* FirebaseHelper.swift */,
 				A38CF1A8231ACAD20048B7C9 /* Constant.swift */,
 				A38CF1AA231B31A90048B7C9 /* CashCaulculatorTableViewController.swift */,
+				A38CF1AC231B9DAC0048B7C9 /* CashCaulculatorCell.swift */,
+				A38CF1AE231D02320048B7C9 /* ChangeCurrencyTableViewController.swift */,
 			);
 			path = "Cash Caulculator";
 			sourceTree = "<group>";
@@ -398,7 +404,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A38CF1AD231B9DAC0048B7C9 /* CashCaulculatorCell.swift in Sources */,
 				A38CF1A7231AC7650048B7C9 /* FirebaseHelper.swift in Sources */,
+				A38CF1AF231D02320048B7C9 /* ChangeCurrencyTableViewController.swift in Sources */,
 				A38CF1AB231B31A90048B7C9 /* CashCaulculatorTableViewController.swift in Sources */,
 				A38CF176231AC1AB0048B7C9 /* LoadingViewController.swift in Sources */,
 				A38CF1A9231ACAD20048B7C9 /* Constant.swift in Sources */,

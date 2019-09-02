@@ -27,4 +27,9 @@ class Constant{
     
     // MARK: - CashCaulculatorTableView forCellReuseIdentifier
     static let cashCaulculatorTableViewforCellReuseIdentifier = "cashCaulculatorTableViewforCellReuseIdentifier"
+    
+    static let cashCaulculatorTableViewforFooterReuseIdentifier = "cashCaulculatorTableViewforFooterReuseIdentifier"
+    
+    //MARK: - ChangeCurrencyTableViewController
+    static let changeCurrencyTableViewCellReuseIdentifier = "changeCurrencyTableViewCellReuseIdentifier"
 }
