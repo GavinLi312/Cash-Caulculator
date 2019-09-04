@@ -9,15 +9,14 @@
 import Foundation
 import UIKit
 
+// myBarButtonItem to pass UITExtField
 class myBarButtonItem: UIBarButtonItem {
     var passedUITextField:UITextField?
 }
 
 
-
 class CashCaulculatorTableViewController: UITableViewController,UITextFieldDelegate,NewCountrySelected{
 
-    
     var country: String?
     
     var countryCurrency: CountryCurrency?
@@ -28,11 +27,18 @@ class CashCaulculatorTableViewController: UITableViewController,UITextFieldDeleg
     
     lazy var cashCaulculatorcells : [IndexPath: CashCaulculatorCell] = [:]
     
+    lazy var textsForAlls:[IndexPath:String] = [:]
+    
     override func viewDidLoad() {
-        self.view.backgroundColor = UIColor.white
+
+        self.navigationController?.navigationBar.barTintColor = UIColor.backgroundColor
+        self.navigationController?.navigationBar.tintColor = UIColor.fillcolor
+        self.navigationController?.navigationBar.prefersLargeTitles = true
         self.tableView.sectionHeaderHeight = 50
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.separatorColor = UIColor.fillcolor
+        self.view.backgroundColor = UIColor.backgroundColor
         let tableFooterView = TableFooterView(frame: CGRect(x: 0, y: 0, width: 0, height: 50))
         tableFooterView.settotalValue(sign: self.countryCurrency!.sign, value: 0.0)
         tableView.tableFooterView = tableFooterView
@@ -51,7 +57,7 @@ class CashCaulculatorTableViewController: UITableViewController,UITextFieldDeleg
     }
     
     func setNavigationItem(){
-        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelPressed(sender:)))
+        let cancelButton = UIBarButtonItem(title: "Clear", style: .plain, target: self, action: #selector(cancelPressed(sender:)))
         let changeCurrencyButton = UIBarButtonItem(title: countryCurrency?.code, style: .plain, target: self, action: #selector(changeCurrency(sender:)))
         self.navigationItem.setRightBarButton(cancelButton, animated: false)
         self.navigationItem.setLeftBarButton(changeCurrencyButton, animated: false)
@@ -78,23 +84,33 @@ class CashCaulculatorTableViewController: UITableViewController,UITextFieldDeleg
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: Constant.cashCaulculatorTableViewforCellReuseIdentifier, for: indexPath) as! CashCaulculatorCell
-            cell.sign = countryCurrency?.bankNoteSign
+            cell.sign = countryCurrency?.sign
             cell.cellValue = Double((countryCurrency?.bankNoteValue[indexPath.row])!)
-            
-            if cell.result == nil{
+            if textsForAlls[indexPath] == nil{
+                textsForAlls[indexPath] = ""
                 cell.result = 0
+            }else{
+                
             }
+//            if cell.result == nil{
+//                cell.result = 0
+//            }
             cell.noteNumberTextField.delegate = self
             self.cashCaulculatorcells[indexPath] = cell
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: Constant.cashCaulculatorTableViewforCellReuseIdentifier, for: indexPath) as! CashCaulculatorCell
-            cell.sign = countryCurrency?.coinSign
+            cell.sign = countryCurrency?.sign
             cell.cellValue = countryCurrency?.coinValue[indexPath.row]
             
-            if cell.result == nil{
+            if textsForAlls[indexPath] == nil{
+                textsForAlls[indexPath] = ""
                 cell.result = 0
             }
+
+//            if cell.result == nil{
+//                cell.result = 0
+//            }
             self.cashCaulculatorcells[indexPath] = cell
             cell.noteNumberTextField.delegate = self
             return cell
@@ -291,22 +307,24 @@ class CashCaulculatorTableViewController: UITableViewController,UITextFieldDeleg
                 textField.text = "\(num)"
             }
         }
-        guard let section = self.findTextFieldIndexPath(textField: textField as! CashCaulculatorTextField)?.section else{
+        guard let indexpath = self.findTextFieldIndexPath(textField: textField as! CashCaulculatorTextField) else{
             print("Error")
             return
         }
         
         var result = 0.0
-        let numberOfRows =  tableView.numberOfRows(inSection: section)
+        let numberOfRows =  tableView.numberOfRows(inSection: indexpath.section)
         for i in 0...numberOfRows - 1{
-            let indexpath = IndexPath(row: i, section: section)
+            let indexpath = IndexPath(row: i, section: indexpath.section)
             guard let counterCell = tableView.cellForRow(at: indexpath) as? CashCaulculatorCell else {
                 print("error")
                 return
             }
             result += counterCell.result!
         }
-        setfooterViewValue(section, result)
+        result = round(result*100)/100
+        textsForAlls[indexpath] = textField.text
+        setfooterViewValue(indexpath.section, result)
         setTableFooterViewValue()
 
     }
@@ -325,9 +343,9 @@ class CashCaulculatorTableViewController: UITableViewController,UITextFieldDeleg
         }
         switch section {
         case 0:
-            headerView.setTitle(title: Constant.bankNoteSignKey)
+            headerView.setTitle(title: Constant.bankNoteValueKey)
         case 1:
-            headerView.setTitle(title: Constant.coinSignKey)
+            headerView.setTitle(title: Constant.coinValueKey)
         default:
             print("Should not happen")
         }
@@ -338,6 +356,9 @@ class CashCaulculatorTableViewController: UITableViewController,UITextFieldDeleg
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let cellView = cell as! CashCaulculatorCell
+        if textsForAlls[indexPath] != nil{
+            cellView.noteNumberTextField.text = textsForAlls[indexPath]
+        }
         if cellView.noteNumberTextField.text == ""{
             cellView.result = 0.0
         }else{
@@ -363,6 +384,8 @@ class CashCaulculatorTableViewController: UITableViewController,UITextFieldDeleg
         let userDefault = UserDefaults()
         userDefault.setValue(countryCurrency.countryName, forKey: Constant.userDefaultKey)
         cancelPressed(sender:nil )
+        self.cashCaulculatorcells.removeAll()
+        self.textsForAlls.removeAll()
         tableView.reloadData()
     }
     

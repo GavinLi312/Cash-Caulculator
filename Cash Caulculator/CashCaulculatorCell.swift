@@ -44,13 +44,14 @@ class CashCaulculatorCell: UITableViewCell{
     var resultLabel : CashCaulculatorLabel = {
         var label = CashCaulculatorLabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        //        label.text = "= 0"
         return label
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addviews()
+        self.contentView.backgroundColor = UIColor.white.withAlphaComponent(0.95)
+        self.backgroundColor = UIColor.backgroundColor
     }
     
     func addviews(){
@@ -81,7 +82,7 @@ class CashCaulculatorCell: UITableViewCell{
 class CashCaulculatorLabel: UILabel {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.textColor = UIColor.gray
+        self.textColor = UIColor.fillcolor
         self.adjustsFontSizeToFitWidth = true
         
     }
@@ -120,7 +121,6 @@ class HeaderView:UITableViewHeaderFooterView{
         label.textAlignment = .left
         label.adjustsFontSizeToFitWidth = true
         label.font = UIFont.boldSystemFont(ofSize: 15)
-        label.textColor = UIColor.black
         return label
     }()
     
@@ -129,13 +129,11 @@ class HeaderView:UITableViewHeaderFooterView{
         label.textAlignment = .right
         label.adjustsFontSizeToFitWidth = true
         label.font = UIFont.boldSystemFont(ofSize: 15)
-        label.textColor = UIColor.black
         return label
     }()
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
-        backgroundColor = UIColor.lightGray
         addviews()
     }
     
@@ -155,7 +153,7 @@ class HeaderView:UITableViewHeaderFooterView{
     
     func settotalValue(sign:String, value:Double) {
         self.value = value
-        totalLabel.text = "Total: \(sign)\(value)"
+        totalLabel.text = "Subtotal: \(sign)\(value)"
     }
     
     func setTitle(title:String){
@@ -179,7 +177,7 @@ class TableFooterView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         addviews()
-        self.backgroundColor = .yellow
+        self.backgroundColor = UIColor.backgroundColor
     }
     
     

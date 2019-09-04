@@ -9,20 +9,17 @@
 import Foundation
 import FirebaseDatabase
 
+// Country Currency, to receive the value from firebase
 struct CountryCurrency: Codable {
-    let bankNoteSign:String
     let bankNoteValue : [Int]
     let code : String
-    let coinSign: String
     let coinValue: [Double]
     let sign : String
     let countryName: String
     
     init(key:String,json:[String:Any]) {
-        bankNoteSign = json[Constant.bankNoteSignKey] as! String
         bankNoteValue = json[Constant.bankNoteValueKey] as! [Int]
         code = json[Constant.codeKey] as! String
-        coinSign = json[Constant.coinSignKey] as! String
         coinValue = json[Constant.coinValueKey] as! [Double]
         sign = json[Constant.signKey] as! String
         countryName = key
@@ -30,6 +27,7 @@ struct CountryCurrency: Codable {
 }
 
 
+// Firebase
 class FirebaseHelper {
     var databaseRef : DatabaseReference?
     var tableRef: DatabaseReference?
@@ -49,6 +47,7 @@ class FirebaseHelper {
         getCurrencyData(databaseRef: tableRef!)
     }
     
+    // get data from firebase
     func getCurrencyData(databaseRef: DatabaseReference){
         databaseRef.observeSingleEvent(of: .value, with: { (snapshot) in
             guard let value = snapshot.value as? [String:[String:Any]] else{

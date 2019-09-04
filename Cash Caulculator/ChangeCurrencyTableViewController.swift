@@ -18,7 +18,6 @@ protocol NewCountrySelected {
 
 class ChangeCurrencyTableViewController : UITableViewController,UISearchResultsUpdating{
 
-
     var countryCurrencies: [CountryCurrency]?
     
     var newCountry: NewCountrySelected?
@@ -32,6 +31,8 @@ class ChangeCurrencyTableViewController : UITableViewController,UISearchResultsU
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
+        tableView.separatorColor = UIColor.fillcolor
+        self.view.backgroundColor = UIColor.backgroundColor
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: Constant.changeCurrencyTableViewCellReuseIdentifier)
         filteredCountryCurrencies = countryCurrencies!
         searchController.searchResultsUpdater = self
@@ -43,7 +44,13 @@ class ChangeCurrencyTableViewController : UITableViewController,UISearchResultsU
     func updateSearchResults(for searchController: UISearchController) {
         if let searchText = searchController.searchBar.text,searchText.count > 0{
             filteredCountryCurrencies = (countryCurrencies?.filter({
-                $0.countryName.contains(searchText) || $0.code.contains(searchText)
+                if  $0.countryName.contains(searchText){
+                    return true
+                }else if $0.code.contains(searchText){
+                    return true
+                }else{
+                    return false
+                }
             }))!
         }else{
             filteredCountryCurrencies = countryCurrencies!
@@ -62,9 +69,12 @@ class ChangeCurrencyTableViewController : UITableViewController,UISearchResultsU
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: Constant.changeCurrencyTableViewCellReuseIdentifier)
-
+        cell.contentView.backgroundColor = UIColor.white.withAlphaComponent(0.95)
+        cell.backgroundColor = UIColor.backgroundColor
         let countryCurrency = filteredCountryCurrencies[indexPath.row]
         cell.textLabel?.text = countryCurrency.code
+        cell.textLabel?.backgroundColor = cell.contentView.backgroundColor
+        cell.detailTextLabel?.backgroundColor = cell.contentView.backgroundColor
         cell.detailTextLabel?.text = countryCurrency.countryName
         return cell
     }

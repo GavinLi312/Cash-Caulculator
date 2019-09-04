@@ -9,18 +9,19 @@
 import Foundation
 
 class Constant{
+    // Firebase Table Name
     static let TableName = "World Wide Currency"
     
+    // The Default Country
     static let defaultCountry = "Australia"
     
+    // Userdefault Key
     static let userDefaultKey = "Country"
     
     // MARK: - Country Currency json Keys
     
-    static let bankNoteSignKey = "BankNote Sign"
     static let bankNoteValueKey = "BankNote Value"
     static let codeKey = "Code"
-    static let coinSignKey = "Coin Sign"
     static let coinValueKey = "Coin Value"
     static let signKey = "Sign"
     
@@ -33,3 +34,4 @@ class Constant{
     //MARK: - ChangeCurrencyTableViewController
     static let changeCurrencyTableViewCellReuseIdentifier = "changeCurrencyTableViewCellReuseIdentifier"
 }
+
