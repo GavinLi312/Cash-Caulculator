@@ -8,6 +8,7 @@
 
 import UIKit
 
+//delegate
 protocol firebaseLoadingFinish {
    func  firebaseLoadingFinish()
 }
