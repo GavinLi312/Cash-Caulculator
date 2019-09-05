@@ -79,7 +79,8 @@ class LoadingViewController: UIViewController, firebaseLoadingFinish{
     func initializeCircleView() {
         
         let trackLayer = CAShapeLayer()
-        let circlarPath = UIBezierPath(arcCenter: .zero, radius: self.view.frame.width/3, startAngle: 0, endAngle: 2.0*CGFloat.pi, clockwise: true)
+        let width = (self.view.frame.width < self.view.frame.height) ? self.view.frame.width/3 : self.view.frame.height/3
+        let circlarPath = UIBezierPath(arcCenter: .zero, radius: width, startAngle: 0, endAngle: 2.0*CGFloat.pi, clockwise: true)
         pulsatingLayer = CAShapeLayer()
         pulsatingLayer.path = circlarPath.cgPath
         

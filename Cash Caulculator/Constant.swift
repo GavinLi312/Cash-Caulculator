@@ -33,5 +33,9 @@ class Constant{
     
     //MARK: - ChangeCurrencyTableViewController
     static let changeCurrencyTableViewCellReuseIdentifier = "changeCurrencyTableViewCellReuseIdentifier"
+    
+    
+    // MARK: - Default Bundle Number
+    static let bundleNumber = 10
 }
 

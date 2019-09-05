@@ -224,17 +224,12 @@ class CashCaulculatorTableViewController: UITableViewController,UITextFieldDeleg
     }
     
     func findTextFieldIndexPath(textField:CashCaulculatorTextField) -> IndexPath?{
-        guard let superview = textField.superview?.superview as? CashCaulculatorCell else {
-            print("Error")
-            return nil
-        }
         
-        guard let indexpath = tableView.indexPath(for: superview) else{
-            print("error")
-            return nil
+       let cashCell =  self.cashCaulculatorcells.filter {
+            $0.value.noteNumberTextField == textField
         }
-        
-        return indexpath
+   
+        return cashCell.first?.key
     }
     
     
@@ -281,8 +276,8 @@ class CashCaulculatorTableViewController: UITableViewController,UITextFieldDeleg
     
     fileprivate func setfooterViewValue(_ section: Int, _ result: Double) {
         // tableView
-        let footerView = tableView.headerView(forSection: section) as! HeaderView
-        footerView.settotalValue(sign: countryCurrency!.sign, value: result)
+        let footerView = self.sectionHeaderViews[section]
+        footerView!.settotalValue(sign: countryCurrency!.sign, value: result)
     }
     
     func setTableFooterViewValue(){
@@ -316,11 +311,8 @@ class CashCaulculatorTableViewController: UITableViewController,UITextFieldDeleg
         let numberOfRows =  tableView.numberOfRows(inSection: indexpath.section)
         for i in 0...numberOfRows - 1{
             let indexpath = IndexPath(row: i, section: indexpath.section)
-            guard let counterCell = tableView.cellForRow(at: indexpath) as? CashCaulculatorCell else {
-                print("error")
-                return
-            }
-            result += counterCell.result!
+            let counterCell = self.cashCaulculatorcells[indexpath]
+            result += counterCell!.result!
         }
         result = round(result*100)/100
         textsForAlls[indexpath] = textField.text
@@ -366,11 +358,16 @@ class CashCaulculatorTableViewController: UITableViewController,UITextFieldDeleg
         }
     }
     
+    
+    
+    
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let cellView = cell as! CashCaulculatorCell
-        if cellView.noteNumberTextField.isEditing{
+        if cellView.noteNumberTextField.isFirstResponder{
+
             textFieldDidEndEditing(cellView.noteNumberTextField)
             textFieldShouldReturn(cellView.noteNumberTextField)
+            cellView.noteNumberTextField.resignFirstResponder()
         }
     }
     
