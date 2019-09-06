@@ -23,6 +23,7 @@
 		A38CF1AD231B9DAC0048B7C9 /* CashCaulculatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38CF1AC231B9DAC0048B7C9 /* CashCaulculatorCell.swift */; };
 		A38CF1AF231D02320048B7C9 /* ChangeCurrencyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38CF1AE231D02320048B7C9 /* ChangeCurrencyTableViewController.swift */; };
 		A38CF1B1231E79980048B7C9 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38CF1B0231E79980048B7C9 /* UIColorExtension.swift */; };
+		A3A273AD2322706800EDBE70 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A273AC2322706800EDBE70 /* SummaryViewController.swift */; };
 		DD5C303792530CCB1569EFA0 /* Pods_Cash_CaulculatorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF088CB280AC381011CB3EC3 /* Pods_Cash_CaulculatorUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +72,7 @@
 		A38CF1AC231B9DAC0048B7C9 /* CashCaulculatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashCaulculatorCell.swift; sourceTree = "<group>"; };
 		A38CF1AE231D02320048B7C9 /* ChangeCurrencyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCurrencyTableViewController.swift; sourceTree = "<group>"; };
 		A38CF1B0231E79980048B7C9 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		A3A273AC2322706800EDBE70 /* SummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
 		BF088CB280AC381011CB3EC3 /* Pods_Cash_CaulculatorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cash_CaulculatorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E846720F57D5A10325CA3D47 /* Pods-Cash Caulculator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cash Caulculator.release.xcconfig"; path = "Target Support Files/Pods-Cash Caulculator/Pods-Cash Caulculator.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -159,6 +161,7 @@
 				A38CF1A4231AC2600048B7C9 /* GoogleService-Info.plist */,
 				A38CF17A231AC1AB0048B7C9 /* Cash_Caulculator.xcdatamodeld */,
 				A38CF1A6231AC7650048B7C9 /* FirebaseHelper.swift */,
+				A3A273AC2322706800EDBE70 /* SummaryViewController.swift */,
 				A38CF1A8231ACAD20048B7C9 /* Constant.swift */,
 				A38CF1AA231B31A90048B7C9 /* CashCaulculatorTableViewController.swift */,
 				A38CF1AC231B9DAC0048B7C9 /* CashCaulculatorCell.swift */,
@@ -412,6 +415,7 @@
 				A38CF1AF231D02320048B7C9 /* ChangeCurrencyTableViewController.swift in Sources */,
 				A38CF1AB231B31A90048B7C9 /* CashCaulculatorTableViewController.swift in Sources */,
 				A38CF176231AC1AB0048B7C9 /* LoadingViewController.swift in Sources */,
+				A3A273AD2322706800EDBE70 /* SummaryViewController.swift in Sources */,
 				A38CF1B1231E79980048B7C9 /* UIColorExtension.swift in Sources */,
 				A38CF1A9231ACAD20048B7C9 /* Constant.swift in Sources */,
 				A38CF17C231AC1AB0048B7C9 /* Cash_Caulculator.xcdatamodeld in Sources */,

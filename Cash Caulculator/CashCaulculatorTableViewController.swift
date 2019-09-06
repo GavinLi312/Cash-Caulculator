@@ -16,8 +16,6 @@ class myBarButtonItem: UIBarButtonItem {
 
 
 class CashCaulculatorTableViewController: UITableViewController,UITextFieldDelegate,NewCountrySelected{
-
-    var country: String?
     
     var countryCurrency: CountryCurrency?
     
@@ -31,9 +29,7 @@ class CashCaulculatorTableViewController: UITableViewController,UITextFieldDeleg
     
     override func viewDidLoad() {
 
-        self.navigationController?.navigationBar.barTintColor = UIColor.backgroundColor
-        self.navigationController?.navigationBar.tintColor = UIColor.fillcolor
-        self.navigationController?.navigationBar.prefersLargeTitles = true
+
         self.tableView.sectionHeaderHeight = 50
         tableView.delegate = self
         tableView.dataSource = self
@@ -89,12 +85,8 @@ class CashCaulculatorTableViewController: UITableViewController,UITextFieldDeleg
             if textsForAlls[indexPath] == nil{
                 textsForAlls[indexPath] = ""
                 cell.result = 0
-            }else{
-                
             }
-//            if cell.result == nil{
-//                cell.result = 0
-//            }
+
             cell.noteNumberTextField.delegate = self
             self.cashCaulculatorcells[indexPath] = cell
             return cell
@@ -108,9 +100,6 @@ class CashCaulculatorTableViewController: UITableViewController,UITextFieldDeleg
                 cell.result = 0
             }
 
-//            if cell.result == nil{
-//                cell.result = 0
-//            }
             self.cashCaulculatorcells[indexPath] = cell
             cell.noteNumberTextField.delegate = self
             return cell

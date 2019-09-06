@@ -51,15 +51,18 @@ class LoadingViewController: UIViewController, firebaseLoadingFinish{
     
     func firebaseLoadingFinish() {
         let country = readUserDefaultCountry()
-        let caulculatorViewController = CashCaulculatorTableViewController()
+        let summaryViewController = SummaryViewController()
 
         let currency = firebaseHelper.countriesCurrency?.filter({
             $0.countryName == country
         })
-        caulculatorViewController.country = country
-        caulculatorViewController.countryCurrency = currency?.first
-        caulculatorViewController.countryCurrencies = firebaseHelper.countriesCurrency
-        let navigationController = UINavigationController(rootViewController: caulculatorViewController)
+        summaryViewController.countryCurrency = currency?.first
+        summaryViewController.countriesCurrency = firebaseHelper.countriesCurrency!
+        
+        let navigationController = UINavigationController(rootViewController: summaryViewController)
+        navigationController.navigationBar.barTintColor = UIColor.backgroundColor
+        navigationController.navigationBar.tintColor = UIColor.fillcolor
+        navigationController.navigationBar.prefersLargeTitles = true
         self.present(navigationController, animated: true, completion: nil)
         
     }

@@ -15,7 +15,7 @@ class CashCaulculatorCell: UITableViewCell{
     var signLabel : CashCaulculatorLabel = {
         var label = CashCaulculatorLabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = NSTextAlignment.left
+        label.textAlignment = NSTextAlignment.right
         return label
     }()
     
@@ -40,15 +40,15 @@ class CashCaulculatorCell: UITableViewCell{
         return textField
     }()
     
-    var bundleNumberTextField : CashCaulculatorTextField = {
-        var textField = CashCaulculatorTextField()
-        textField.adjustsFontSizeToFitWidth = true
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.placeholder = "Bd(0)"
-        textField.text = ""
-        return textField
-    }()
-    
+//    var bundleNumberTextField : CashCaulculatorTextField = {
+//        var textField = CashCaulculatorTextField()
+//        textField.adjustsFontSizeToFitWidth = true
+//        textField.translatesAutoresizingMaskIntoConstraints = false
+//        textField.placeholder = "Bd(0)"
+//        textField.text = ""
+//        return textField
+//    }()
+//
     var resultLabel : CashCaulculatorLabel = {
         var label = CashCaulculatorLabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -65,12 +65,11 @@ class CashCaulculatorCell: UITableViewCell{
     func addviews(){
         self.contentView.addSubview(signLabel)
         self.contentView.addSubview(noteNumberTextField)
-        self.contentView.addSubview(bundleNumberTextField)
+
         self.contentView.addSubview(resultLabel)
         
-        contentView.addConstraintsWithFormat(format: "H:|-8-[v0(v2)]-8-[v1(v2)]-8-[v2(v3)]-8-[v3]-8-|", views: signLabel,bundleNumberTextField,noteNumberTextField,resultLabel)
+        contentView.addConstraintsWithFormat(format: "H:|-8-[v0(v2)]-8-[v1(v2)]-8-[v2]-8-|", views: signLabel,noteNumberTextField,resultLabel)
         contentView.addConstraintsWithFormat(format: "V:|-2-[v0]-2-|", views: signLabel)
-        contentView.addConstraintsWithFormat(format: "V:|-2-[v0]-2-|", views: bundleNumberTextField)
         contentView.addConstraintsWithFormat(format: "V:|-2-[v0]-2-|", views: noteNumberTextField)
         contentView.addConstraintsWithFormat(format: "V:|-2-[v0]-2-|", views: resultLabel)
     }
@@ -80,7 +79,7 @@ class CashCaulculatorCell: UITableViewCell{
     }
     
     func changeSignLabel(sign:String, value:Any){
-        signLabel.text = "\(sign)\(value) "
+        signLabel.text = "\(sign)\(value) X"
     }
     
     func changeResultLabel(sign:String,value:Double) {
