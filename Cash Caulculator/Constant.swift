@@ -35,7 +35,10 @@ class Constant{
     static let changeCurrencyTableViewCellReuseIdentifier = "changeCurrencyTableViewCellReuseIdentifier"
     
     
-    // MARK: - Default Bundle Number
-    static let bundleNumber = 10
+    //MARK: - title Label Content
+    static let labelTitles = ["Date","Cashier","From","To", "Account Receivable", "Discount","Proceeds","Cash(p)","Card(p)","Actual Amount","Cash(A)","Card(A)","Difference","Cash(D)","Card(D)","Reason"]
+    
+    //MARK: - title Label Content
+    static let menuArray = ["Count Cash", "Share","Exit"]
 }
 

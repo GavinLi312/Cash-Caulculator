@@ -15,7 +15,9 @@ class myBarButtonItem: UIBarButtonItem {
 }
 
 
-class CashCaulculatorTableViewController: UITableViewController,UITextFieldDelegate,NewCountrySelected{
+class CashCaulculatorTableViewController: UITableViewController,UITextFieldDelegate{
+    
+    var countcashDelegate : CountCashDelegate?
     
     var countryCurrency: CountryCurrency?
     
@@ -54,9 +56,12 @@ class CashCaulculatorTableViewController: UITableViewController,UITextFieldDeleg
     
     func setNavigationItem(){
         let cancelButton = UIBarButtonItem(title: "Clear", style: .plain, target: self, action: #selector(cancelPressed(sender:)))
-        let changeCurrencyButton = UIBarButtonItem(title: countryCurrency?.code, style: .plain, target: self, action: #selector(changeCurrency(sender:)))
         self.navigationItem.setRightBarButton(cancelButton, animated: false)
-        self.navigationItem.setLeftBarButton(changeCurrencyButton, animated: false)
+        if self.countcashDelegate != nil{
+            let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(navigationBarDoneButtonClicked(sender:)))
+            self.navigationItem.setLeftBarButton(doneButton, animated: false)
+        }
+        
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -157,17 +162,20 @@ class CashCaulculatorTableViewController: UITableViewController,UITextFieldDeleg
         tableView.selectRow(at: previousIndexPath, animated: true, scrollPosition: .none)
     }
     
-    @objc func changeCurrency(sender:UIBarButtonItem) {
-        
-        let viewcontroller = ChangeCurrencyTableViewController()
-        viewcontroller.countryCurrencies = self.countryCurrencies?.sorted(by: {
-            $0.countryName < $1.countryName
-        })
-        
-        viewcontroller.newCountry = self
-        navigationController?.pushViewController(viewcontroller, animated: true)
+    @objc func navigationBarDoneButtonClicked(sender: UIBarButtonItem){
+        self.navigationController?.popViewController(animated: true)
+        guard let tableFooterView = tableView.tableFooterView as? TableFooterView else {
+            print("error")
+            return
+        }
+        var amount: Double?
+        if tableFooterView.alltotalLabel.text == ""{
+            amount = 0
+        }else{
+            amount = tableFooterView.totalValue!
+        }
+        self.countcashDelegate?.countcashFinished(amount:amount! )
     }
-    
     
     func findPreviousIndexPath(indexpath:IndexPath) -> IndexPath?{
         var indexpathSet = cashCaulculatorcells.keys.sorted {
@@ -362,17 +370,6 @@ class CashCaulculatorTableViewController: UITableViewController,UITextFieldDeleg
     
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 50
-    }
-    
-    
-    func newCountrySelected(countryCurrency: CountryCurrency) {
-        self.countryCurrency = countryCurrency
-        let userDefault = UserDefaults()
-        userDefault.setValue(countryCurrency.countryName, forKey: Constant.userDefaultKey)
-        cancelPressed(sender:nil )
-        self.cashCaulculatorcells.removeAll()
-        self.textsForAlls.removeAll()
-        tableView.reloadData()
     }
     
 

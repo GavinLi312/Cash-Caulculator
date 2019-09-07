@@ -40,15 +40,6 @@ class CashCaulculatorCell: UITableViewCell{
         return textField
     }()
     
-//    var bundleNumberTextField : CashCaulculatorTextField = {
-//        var textField = CashCaulculatorTextField()
-//        textField.adjustsFontSizeToFitWidth = true
-//        textField.translatesAutoresizingMaskIntoConstraints = false
-//        textField.placeholder = "Bd(0)"
-//        textField.text = ""
-//        return textField
-//    }()
-//
     var resultLabel : CashCaulculatorLabel = {
         var label = CashCaulculatorLabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -173,6 +164,9 @@ class HeaderView:UITableViewHeaderFooterView{
 //MARK: - Table Footer View
 
 class TableFooterView: UIView {
+    
+    var totalValue : Double?
+    
     var alltotalLabel : CashCaulculatorLabel = {
         var label = CashCaulculatorLabel()
         label.textAlignment = .center
@@ -201,6 +195,7 @@ class TableFooterView: UIView {
     }
     
     func settotalValue(sign:String, value:Double) {
+        totalValue = value
         alltotalLabel.text = "Total: \(sign)\(value)"
     }
     

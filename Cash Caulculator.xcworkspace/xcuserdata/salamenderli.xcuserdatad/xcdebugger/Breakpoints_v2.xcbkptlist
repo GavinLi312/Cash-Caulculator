@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cash Caulculator/CashCaulculatorTableViewController.swift"
-            timestampString = "589460201.6402971"
+            timestampString = "589544916.179563"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "387"
-            endingLineNumber = "387"
-            landmarkName = "addConstraintsWithFormat(format:views:)"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
+            landmarkName = "navigationBarDoneButtonClicked(sender:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cash Caulculator/CashCaulculatorTableViewController.swift"
-            timestampString = "589460201.640365"
+            timestampString = "589544916.179657"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "339"
-            endingLineNumber = "339"
-            landmarkName = "tableView(_:willDisplay:forRowAt:)"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
+            landmarkName = "navigationBarDoneButtonClicked(sender:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
