@@ -4,7 +4,7 @@
 //
 //  Created by Salamender Li on 6/9/19.
 //  Copyright © 2019 Salamender Li. All rights reserved.
-//
+//some change
 
 import Foundation
 import UIKit
@@ -242,10 +242,10 @@ class SummaryViewController: UIViewController, MenuButtonClickedProtocol,UITextF
         }else if textField != cashierSection.titleTextFieldHolder.textField && textField != reasonTextHolder.textField{
             createToolBar(textField:textField)
         }
-//
-//        if [accountReceivableTextHolder.textField,actualAmountSection.titleTextFieldHolder.textField, differenceSection.titleTextFieldHolder.textField,differenceSection.subtitleTextFieldHolder.textField,differenceSection.subtitleTextFieldHolder.textField,differenceSection.subtitleTextFieldHolder2.textField].contains(textField){
-//            return false
-//        }
+
+        if [actualAmountSection.titleTextFieldHolder.textField, differenceSection.titleTextFieldHolder.textField,differenceSection.subtitleTextFieldHolder.textField,differenceSection.subtitleTextFieldHolder2.textField].contains(textField){
+            return false
+        }
 
         return true
     }
@@ -259,6 +259,27 @@ class SummaryViewController: UIViewController, MenuButtonClickedProtocol,UITextF
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         
+        //calculate the sum
+        if textField == textFields[Constant.labelTitles[10]] || textField == textFields[Constant.labelTitles[11]]{
+            calculateSumofTwoTextField(factor1:textFields[Constant.labelTitles[10]]! , factor2: textFields[Constant.labelTitles[11]]!, result: textFields[Constant.labelTitles[9]]!)
+        }
+        
+        let firstDeductionGroup = [textFields[Constant.labelTitles[9]],textFields[Constant.labelTitles[6]]]
+        //deduction
+        if firstDeductionGroup.contains((textField as! TextFieldHolderTextField)){
+            calculateDifferenceOfTwoTextField(factor1: firstDeductionGroup[0]!, factor2: firstDeductionGroup[1]!, result: textFields[Constant.labelTitles[12]]!)
+        }
+        
+        let secondDeductionGroup = [textFields[Constant.labelTitles[10]],textFields[Constant.labelTitles[7]]]
+        if secondDeductionGroup.contains((textField as! TextFieldHolderTextField)){
+            calculateDifferenceOfTwoTextField(factor1: secondDeductionGroup[0]!, factor2: secondDeductionGroup[1]!, result: textFields[Constant.labelTitles[13]]!)
+        }
+        
+        let thirdGroup = [textFields[Constant.labelTitles[11]],textFields[Constant.labelTitles[8]]]
+        
+        if thirdGroup.contains((textField as! TextFieldHolderTextField)){
+            calculateDifferenceOfTwoTextField(factor1: thirdGroup[0]!, factor2: thirdGroup[1]!, result: textFields[Constant.labelTitles[14]]!)
+        }
     }
     
     func createTimePicker(textField:UITextField){
@@ -332,7 +353,6 @@ class SummaryViewController: UIViewController, MenuButtonClickedProtocol,UITextF
         calculatorCashViewController.countryCurrencies = self.countriesCurrency
         calculatorCashViewController.countcashDelegate = self
         self.navigationController?.pushViewController(calculatorCashViewController, animated: true)
-        
     }
     
     /// keyboard methods keyboard will show
@@ -370,4 +390,38 @@ class SummaryViewController: UIViewController, MenuButtonClickedProtocol,UITextF
         textField!.text = "\(amount)"
     }
     
+    /// calculate the sum of two text fields
+    func calculateSumofTwoTextField(factor1: TextFieldHolderTextField,factor2:TextFieldHolderTextField,result:TextFieldHolderTextField){
+        let factor1text = factor1.text
+        let factor2text = factor2.text
+        
+        if factor1text == "" && factor2text == ""{
+            return
+        }else if factor1text == ""{
+            result.text = factor2text
+        }else if factor2text == ""{
+            result.text = factor1text
+        }else{
+            result.text = "\(Double(factor1text!)! + Double(factor2text!)!)"
+        }
+        textFieldDidEndEditing(result)
+    }
+    
+    
+    /// deduction of ToTextFields factor1 will be reduced by factor2
+    func calculateDifferenceOfTwoTextField(factor1: TextFieldHolderTextField,factor2:TextFieldHolderTextField,result:TextFieldHolderTextField){
+        let factor1text = factor1.text
+        let factor2text = factor2.text
+        if factor1text == "" && factor2text == ""{
+            return
+        }else if factor1text == ""{
+            result.text = "\(-Double(factor2text!)!)"
+        }else if factor2text == ""{
+            result.text = factor1text
+        }else{
+            result.text = "\(Double(factor1text!)! - Double(factor2text!)!)"
+        }
+        
+        textFieldDidEndEditing(result)
+    }
 }
