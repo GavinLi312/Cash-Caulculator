@@ -16,10 +16,25 @@ class Cash_CaulculatorTests: XCTestCase {
     }
 
     override func tearDown() {
+        let fileHelper = FileHelper()
+        for item in fileHelper.getAllFileListFromDirectory(){
+            fileHelper.deleteImage(imageName: item)
+        }
+        assert(fileHelper.getAllFileListFromDirectory().count == 0)
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
     func testExample() {
+        let fileHelper = FileHelper()
+        let image = #imageLiteral(resourceName: "GM Logo")
+        fileHelper.saveImageWithName(image: image, name: "Test")
+        
+        
+        
+        assert(fileHelper.getAllFileListFromDirectory().count != 0)
+//        fileHelper.saveImageWithName(image: image, name: "Text Image")
+        
+        print(fileHelper.getAllFileListFromDirectory())
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }

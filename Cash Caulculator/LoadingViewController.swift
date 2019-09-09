@@ -26,27 +26,29 @@ class LoadingViewController: UIViewController, firebaseLoadingFinish{
     
     let shapeLayer = CAShapeLayer()
     
-    var pulsatingLayer: CAShapeLayer!
+    let pulsatingLayer =  CAShapeLayer()
+    
+    let trackLayer = CAShapeLayer()
     
     let firebaseHelper = FirebaseHelper()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.backgroundColor
-        firebaseHelper.loadingFinish = self
-        initializeCircleView()
         view.addSubview(loadinglabel)
-        loadinglabel.frame = CGRect(x: 0, y: 0, width: 200, height: 50)
-        loadinglabel.center = view.center
-        view.bringSubviewToFront(loadinglabel)
-        animateShapeLayer()
+        firebaseHelper.loadingFinish = self
+
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        if self.pulsatingLayer != nil{
-            animatePulsatingLayer()
-        }
+    
+    override func viewWillLayoutSubviews() {
+        initializeCircleView(position: view.center)
+        animateShapeLayer()
+        animatePulsatingLayer()
+        loadinglabel.frame = CGRect(x: 0, y: 0, width: 200, height: 50)
+        loadinglabel.center = view.center
+        view.bringSubviewToFront(loadinglabel)
     }
     
     func firebaseLoadingFinish() {
@@ -64,7 +66,7 @@ class LoadingViewController: UIViewController, firebaseLoadingFinish{
         navigationController.navigationBar.tintColor = UIColor.fillcolor
         navigationController.navigationBar.prefersLargeTitles = true
         navigationController.navigationBar.isTranslucent = false
-        self.present(navigationController, animated: true, completion: nil)
+       // self.present(navigationController, animated: true, completion: nil)
         
     }
     
@@ -80,12 +82,11 @@ class LoadingViewController: UIViewController, firebaseLoadingFinish{
 
     ///Progress Circle
     //https://www.youtube.com/watch?v=O3ltwjDJaMk
-    func initializeCircleView() {
+    func initializeCircleView(position: CGPoint) {
         
-        let trackLayer = CAShapeLayer()
+        
         let width = (self.view.frame.width < self.view.frame.height) ? self.view.frame.width/3 : self.view.frame.height/3
         let circlarPath = UIBezierPath(arcCenter: .zero, radius: width, startAngle: 0, endAngle: 2.0*CGFloat.pi, clockwise: true)
-        pulsatingLayer = CAShapeLayer()
         pulsatingLayer.path = circlarPath.cgPath
         
         pulsatingLayer.lineWidth = 35
@@ -94,9 +95,11 @@ class LoadingViewController: UIViewController, firebaseLoadingFinish{
         
         pulsatingLayer.lineCap = CAShapeLayerLineCap.round
 
-        pulsatingLayer.position = view.center
-        view.layer.addSublayer(pulsatingLayer)
-
+        pulsatingLayer.position = position
+        
+        if view.layer.sublayers!.contains(pulsatingLayer) == false{
+            view.layer.addSublayer(pulsatingLayer)
+        }
         trackLayer.path = circlarPath.cgPath
         
         trackLayer.strokeColor =  UIColor.strokeColor.cgColor
@@ -105,15 +108,16 @@ class LoadingViewController: UIViewController, firebaseLoadingFinish{
         trackLayer.fillColor = UIColor.fillcolor.cgColor
         
         trackLayer.lineCap = CAShapeLayerLineCap.round
-        trackLayer.position = view.center
+        trackLayer.position = position
         
         trackLayer.shadowOffset = CGSize(width: 0, height: 5)
         trackLayer.shadowRadius = 5
         trackLayer.shadowOpacity = 0.3
         trackLayer.shadowColor = UIColor.lightGray.cgColor
         
-        view.layer.addSublayer(trackLayer)
-        
+        if view.layer.sublayers!.contains(trackLayer) == false{
+            view.layer.addSublayer(trackLayer)
+        }
         shapeLayer.path = circlarPath.cgPath
         
         shapeLayer.strokeColor = UIColor.shapeLayerColor.cgColor
@@ -123,11 +127,12 @@ class LoadingViewController: UIViewController, firebaseLoadingFinish{
         shapeLayer.fillColor = UIColor.clear.cgColor
         shapeLayer.lineCap = CAShapeLayerLineCap.round
         shapeLayer.strokeEnd = 0
-        shapeLayer.position = view.center
+        shapeLayer.position = position
         shapeLayer.transform = CATransform3DMakeRotation(-CGFloat.pi/2, 0, 0, 1)
-        shapeLayer.position = view.center
         
-        view.layer.addSublayer(shapeLayer)
+        if view.layer.sublayers!.contains(shapeLayer) == false{
+            view.layer.addSublayer(shapeLayer)
+        }
     }
     
     func animatePulsatingLayer(){
@@ -136,7 +141,10 @@ class LoadingViewController: UIViewController, firebaseLoadingFinish{
         animation.duration = 0.9
         animation.autoreverses = true
         animation.repeatCount = Float.infinity
+        
+        if pulsatingLayer.animation(forKey: "pulsating") == nil{
         pulsatingLayer.add(animation, forKey: "pulsating")
+        }
     }
     
     func animateShapeLayer(){
@@ -146,7 +154,14 @@ class LoadingViewController: UIViewController, firebaseLoadingFinish{
         basicAnimation.fillMode = CAMediaTimingFillMode.forwards
         basicAnimation.isRemovedOnCompletion = true
         basicAnimation.repeatCount = Float.infinity
-        shapeLayer.add(basicAnimation, forKey: "Humidity")
+        if shapeLayer.animation(forKey: "shapeLaype") == nil {
+        shapeLayer.add(basicAnimation, forKey: "shapeLaype")
+        }
+    }
+    
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        self.view.layoutIfNeeded()
+        self.view.layoutSubviews()
     }
 }
 

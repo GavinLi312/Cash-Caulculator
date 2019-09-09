@@ -39,6 +39,11 @@ class Constant{
     static let labelTitles = ["Date","Cashier","From","To", "Account Receivable", "Discount","Proceeds","Cash(p)","Card(p)","Actual Amount","Cash(A)","Card(A)","Difference","Cash(D)","Card(D)","Reason"]
     
     //MARK: - title Label Content
-    static let menuArray = ["Count Cash", "Share","Exit"]
+    static let menuArray = ["Count Cash", "Share","Save","Check History","Exit"]
+    
+    //MARK: - CheckHistoryTabkeViewController identifier
+    
+    static let checkHistoryTabkeViewControlleridentifier = "CheckHistoryTabkeViewControllerIdentifier"
+    
 }
 

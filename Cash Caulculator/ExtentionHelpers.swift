@@ -74,6 +74,13 @@ extension NSDate {
         let string = dateFormatter.string(from: Date(date: self))
         return string
     }
+    
+    func dateFormaterForName() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM-dd-yyyy-HH-mm-ss"
+        let string = dateFormatter.string(from: Date(date: self))
+        return string
+    }
 }
 
 extension Date{

@@ -215,6 +215,31 @@ class SummaryViewController: UIViewController, MenuButtonClickedProtocol,UITextF
             let image = captureScreenshot()
             let activityController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
             self.present(activityController, animated: true, completion: nil)
+        case .save:
+            let image = captureScreenshot()
+            let name = "\(NSDate().dateFormaterForName())\((textFields[Constant.labelTitles[1]]?.text!)! )"
+            let fileHelper = FileHelper()
+            fileHelper.saveImageWithName(image: image, name: name)
+            let messageView = buildMessageView()
+            self.view.addSubview(messageView)
+            messageView.translatesAutoresizingMaskIntoConstraints = false
+            var constraints : [NSLayoutConstraint] = []
+            let centerXConstraint = NSLayoutConstraint(item: messageView, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0)
+            let centerYConstraint = NSLayoutConstraint(item: messageView, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1, constant: 0)
+            let heightAnchor = NSLayoutConstraint(item: messageView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 100)
+            let widthAnchor = NSLayoutConstraint(item: messageView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 1, constant: 200)
+            constraints.append(centerXConstraint)
+            constraints.append(centerYConstraint)
+            constraints.append(heightAnchor)
+            constraints.append(widthAnchor)
+            NSLayoutConstraint.activate(constraints)
+            _ = Timer.scheduledTimer(withTimeInterval: 1.2, repeats: false) { (Timer) in
+                messageView.removeFromSuperview()
+                NSLayoutConstraint.deactivate(constraints)
+            }
+        case .checkHistory:
+            let vc = CheckHistoryTabkeViewController()
+            navigationController?.pushViewController(vc, animated: true)
         }
     }
     
@@ -370,7 +395,6 @@ class SummaryViewController: UIViewController, MenuButtonClickedProtocol,UITextF
         }else if firstResponsider.superview?.superview == self.contentView{
              superview = firstResponsider.superview
         }
-        
         let keyboardTop = self.contentView.frame.maxY - getKeyboardHeight(notification: notification)
         let textFieldBottom = superview?.frame.maxY
         
@@ -389,6 +413,8 @@ class SummaryViewController: UIViewController, MenuButtonClickedProtocol,UITextF
         let textField = textFields[Constant.labelTitles[10]]
         textField!.text = "\(amount)"
     }
+    
+    //MARK: - Calculation
     
     /// calculate the sum of two text fields
     func calculateSumofTwoTextField(factor1: TextFieldHolderTextField,factor2:TextFieldHolderTextField,result:TextFieldHolderTextField){
@@ -421,7 +447,25 @@ class SummaryViewController: UIViewController, MenuButtonClickedProtocol,UITextF
         }else{
             result.text = "\(Double(factor1text!)! - Double(factor2text!)!)"
         }
-        
         textFieldDidEndEditing(result)
     }
+    
+    
+    /// build Message View
+    func buildMessageView() -> UIView{
+        let label = CashCaulculatorLabel()
+        label.textColor = .white
+        label.textAlignment = .center
+        label.text = "Save Success!"
+        label.contentMode = .scaleAspectFill
+        let messageView = UIView()
+        messageView.backgroundColor = UIColor.gray.withAlphaComponent(0.75)
+        messageView.layer.cornerRadius = 10
+        messageView.addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        messageView.addConstraintsWithFormat(format: "H:|[v0]|", views: label)
+        messageView.addConstraintsWithFormat(format: "V:|[v0]|", views: label)
+        return messageView
+    }
+
 }

@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		0247498A177CB653130E3B75 /* Pods_Cash_CaulculatorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00795C991E3BE59C076E88B4 /* Pods_Cash_CaulculatorTests.framework */; };
 		8926771A137E94921124C67F /* Pods_Cash_Caulculator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E03A49E6CDB3FC70E2D46BF /* Pods_Cash_Caulculator.framework */; };
+		A3116B0B2324804400F08F28 /* FileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3116B0A2324804400F08F28 /* FileHelper.swift */; };
+		A3116B0D23248D9F00F08F28 /* CheckHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3116B0C23248D9F00F08F28 /* CheckHistoryTableViewController.swift */; };
+		A3116B0F2324940D00F08F28 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3116B0E2324940D00F08F28 /* ImageViewController.swift */; };
 		A38CF174231AC1AB0048B7C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38CF173231AC1AB0048B7C9 /* AppDelegate.swift */; };
 		A38CF176231AC1AB0048B7C9 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38CF175231AC1AB0048B7C9 /* LoadingViewController.swift */; };
 		A38CF17C231AC1AB0048B7C9 /* Cash_Caulculator.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A38CF17A231AC1AB0048B7C9 /* Cash_Caulculator.xcdatamodeld */; };
@@ -54,6 +57,9 @@
 		2802360311718FCCE25B68A8 /* Pods-Cash Caulculator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cash Caulculator.debug.xcconfig"; path = "Target Support Files/Pods-Cash Caulculator/Pods-Cash Caulculator.debug.xcconfig"; sourceTree = "<group>"; };
 		69671DFE6D6EB0089F079238 /* Pods-Cash CaulculatorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cash CaulculatorUITests.debug.xcconfig"; path = "Target Support Files/Pods-Cash CaulculatorUITests/Pods-Cash CaulculatorUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8E03A49E6CDB3FC70E2D46BF /* Pods_Cash_Caulculator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cash_Caulculator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3116B0A2324804400F08F28 /* FileHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileHelper.swift; sourceTree = "<group>"; };
+		A3116B0C23248D9F00F08F28 /* CheckHistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckHistoryTableViewController.swift; sourceTree = "<group>"; };
+		A3116B0E2324940D00F08F28 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		A38CF170231AC1AB0048B7C9 /* Cash Caulculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cash Caulculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A38CF173231AC1AB0048B7C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A38CF175231AC1AB0048B7C9 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
@@ -162,17 +168,20 @@
 				A38CF17D231AC1AD0048B7C9 /* Assets.xcassets */,
 				A38CF17F231AC1AD0048B7C9 /* LaunchScreen.storyboard */,
 				A38CF182231AC1AD0048B7C9 /* Info.plist */,
-				A38CF1A4231AC2600048B7C9 /* GoogleService-Info.plist */,
 				A38CF17A231AC1AB0048B7C9 /* Cash_Caulculator.xcdatamodeld */,
 				A38CF1A6231AC7650048B7C9 /* FirebaseHelper.swift */,
+				A38CF1A4231AC2600048B7C9 /* GoogleService-Info.plist */,
 				A3A273AC2322706800EDBE70 /* SummaryViewController.swift */,
 				A38CF1A8231ACAD20048B7C9 /* Constant.swift */,
+				A3116B0A2324804400F08F28 /* FileHelper.swift */,
 				A3A273B82323933900EDBE70 /* TimePicker.swift */,
 				A38CF1AA231B31A90048B7C9 /* CashCaulculatorTableViewController.swift */,
 				A38CF1AC231B9DAC0048B7C9 /* CashCaulculatorCell.swift */,
 				A38CF1B0231E79980048B7C9 /* ExtentionHelpers.swift */,
 				A3A273B02322770800EDBE70 /* TextFieldHolder.swift */,
 				A3A273B6232370AB00EDBE70 /* MenuViewController.swift */,
+				A3116B0C23248D9F00F08F28 /* CheckHistoryTableViewController.swift */,
+				A3116B0E2324940D00F08F28 /* ImageViewController.swift */,
 			);
 			path = "Cash Caulculator";
 			sourceTree = "<group>";
@@ -419,7 +428,9 @@
 				A3A273B92323933900EDBE70 /* TimePicker.swift in Sources */,
 				A38CF1AD231B9DAC0048B7C9 /* CashCaulculatorCell.swift in Sources */,
 				A38CF1A7231AC7650048B7C9 /* FirebaseHelper.swift in Sources */,
+				A3116B0F2324940D00F08F28 /* ImageViewController.swift in Sources */,
 				A38CF1AB231B31A90048B7C9 /* CashCaulculatorTableViewController.swift in Sources */,
+				A3116B0B2324804400F08F28 /* FileHelper.swift in Sources */,
 				A38CF176231AC1AB0048B7C9 /* LoadingViewController.swift in Sources */,
 				A3A273AD2322706800EDBE70 /* SummaryViewController.swift in Sources */,
 				A38CF1B1231E79980048B7C9 /* ExtentionHelpers.swift in Sources */,
@@ -428,6 +439,7 @@
 				A3A273B12322770800EDBE70 /* TextFieldHolder.swift in Sources */,
 				A38CF17C231AC1AB0048B7C9 /* Cash_Caulculator.xcdatamodeld in Sources */,
 				A38CF174231AC1AB0048B7C9 /* AppDelegate.swift in Sources */,
+				A3116B0D23248D9F00F08F28 /* CheckHistoryTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,6 +15,8 @@ protocol MenuButtonClickedProtocol {
 enum menuButtons{
     case countCash
     case share
+    case save
+    case checkHistory
 }
 
 class MenuViewController: UIViewController {
@@ -90,6 +92,12 @@ class MenuViewController: UIViewController {
             exit()
             self.menuButtonClickedprotocol?.menuButtonClicked(option: .share)
         case menuButton[2]:
+            exit()
+            self.menuButtonClickedprotocol?.menuButtonClicked(option: .save)
+        case menuButton[3]:
+            exit()
+            self.menuButtonClickedprotocol?.menuButtonClicked(option: .checkHistory)
+        case menuButton[4]:
             exit()
         default:
             print("should not happen")
