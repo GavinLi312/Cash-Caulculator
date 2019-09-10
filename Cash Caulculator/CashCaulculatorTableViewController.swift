@@ -172,6 +172,7 @@ class CashCaulculatorTableViewController: UITableViewController,UITextFieldDeleg
         if tableFooterView.alltotalLabel.text == ""{
             amount = 0
         }else{
+
             amount = tableFooterView.totalValue!
         }
         self.countcashDelegate?.countcashFinished(amount:amount! )

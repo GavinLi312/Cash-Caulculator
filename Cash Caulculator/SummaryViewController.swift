@@ -61,7 +61,7 @@ class SummaryViewController: UIViewController, MenuButtonClickedProtocol,UITextF
         var holder = TextFieldHolder()
         holder.translatesAutoresizingMaskIntoConstraints = false
         holder.titleLabel.text = Constant.labelTitles[5]
-        holder.textField.placeholder = Constant.labelTitles[5]
+        holder.textField.placeholder = "-----"
         return holder
     }()
     
@@ -69,7 +69,8 @@ class SummaryViewController: UIViewController, MenuButtonClickedProtocol,UITextF
         var section = TextFieldHolderSecition()
         section.translatesAutoresizingMaskIntoConstraints = false
         section.titleTextFieldHolder.titleLabel.text = Constant.labelTitles[6]
-        section.titleTextFieldHolder.textField.placeholder = Constant.labelTitles[6]
+        section.titleTextFieldHolder.textField.placeholder = "-----"
+            Constant.labelTitles[6]
         section.subtitleTextFieldHolder.titleLabel.text = Constant.labelTitles[7]
         section.subtitleTextFieldHolder.textField.placeholder = Constant.labelTitles[7]
         section.subtitleTextFieldHolder2.titleLabel.text = Constant.labelTitles [8]
@@ -81,7 +82,9 @@ class SummaryViewController: UIViewController, MenuButtonClickedProtocol,UITextF
         var section = TextFieldHolderSecition()
         section.translatesAutoresizingMaskIntoConstraints = false
         section.titleTextFieldHolder.titleLabel.text = Constant.labelTitles[9]
-        section.titleTextFieldHolder.textField.placeholder = Constant.labelTitles[9]
+        section.titleTextFieldHolder.textField.placeholder = "-----"
+//            Constant.labelTitles[9]
+//        section.titleTextFieldHolder.textField.backgroundColor = UIColor.lightGray
         section.subtitleTextFieldHolder.titleLabel.text = Constant.labelTitles[10]
         section.subtitleTextFieldHolder.textField.placeholder = Constant.labelTitles[10]
         section.subtitleTextFieldHolder2.titleLabel.text = Constant.labelTitles [11]
@@ -93,11 +96,15 @@ class SummaryViewController: UIViewController, MenuButtonClickedProtocol,UITextF
         var section = TextFieldHolderSecition()
         section.translatesAutoresizingMaskIntoConstraints = false
         section.titleTextFieldHolder.titleLabel.text = Constant.labelTitles[12]
-        section.titleTextFieldHolder.textField.placeholder = Constant.labelTitles[12]
+        section.titleTextFieldHolder.textField.placeholder = "-----"
+        //Constant.labelTitles[12]
+
         section.subtitleTextFieldHolder.titleLabel.text = Constant.labelTitles[13]
-        section.subtitleTextFieldHolder.textField.placeholder = Constant.labelTitles[13]
+        section.subtitleTextFieldHolder.textField.placeholder = "-----"
+
         section.subtitleTextFieldHolder2.titleLabel.text = Constant.labelTitles [14]
-        section.subtitleTextFieldHolder2.textField.placeholder = Constant.labelTitles[14]
+        section.subtitleTextFieldHolder2.textField.placeholder = "-----"
+
         return section
     }()
     
@@ -268,7 +275,7 @@ class SummaryViewController: UIViewController, MenuButtonClickedProtocol,UITextF
             createToolBar(textField:textField)
         }
 
-        if [actualAmountSection.titleTextFieldHolder.textField, differenceSection.titleTextFieldHolder.textField,differenceSection.subtitleTextFieldHolder.textField,differenceSection.subtitleTextFieldHolder2.textField].contains(textField){
+        if [actualAmountSection.titleTextFieldHolder.textField, differenceSection.titleTextFieldHolder.textField,differenceSection.subtitleTextFieldHolder.textField,differenceSection.subtitleTextFieldHolder2.textField,proceedsSection.titleTextFieldHolder.textField,discountTextHolder.textField].contains(textField){
             return false
         }
 
@@ -288,6 +295,12 @@ class SummaryViewController: UIViewController, MenuButtonClickedProtocol,UITextF
         if textField == textFields[Constant.labelTitles[10]] || textField == textFields[Constant.labelTitles[11]]{
             calculateSumofTwoTextField(factor1:textFields[Constant.labelTitles[10]]! , factor2: textFields[Constant.labelTitles[11]]!, result: textFields[Constant.labelTitles[9]]!)
         }
+        // calculate Proceeds
+        
+        if textField == textFields[Constant.labelTitles[7]] || textField == textFields[Constant.labelTitles[8]]{
+            calculateSumofTwoTextField(factor1: textFields[Constant.labelTitles[7]]!, factor2: textFields[Constant.labelTitles[8]]!, result: textFields[Constant.labelTitles[6]]!)
+        }
+        
         
         let firstDeductionGroup = [textFields[Constant.labelTitles[9]],textFields[Constant.labelTitles[6]]]
         //deduction
@@ -300,11 +313,18 @@ class SummaryViewController: UIViewController, MenuButtonClickedProtocol,UITextF
             calculateDifferenceOfTwoTextField(factor1: secondDeductionGroup[0]!, factor2: secondDeductionGroup[1]!, result: textFields[Constant.labelTitles[13]]!)
         }
         
-        let thirdGroup = [textFields[Constant.labelTitles[11]],textFields[Constant.labelTitles[8]]]
+        let thirdDeductionGroup = [textFields[Constant.labelTitles[11]],textFields[Constant.labelTitles[8]]]
         
-        if thirdGroup.contains((textField as! TextFieldHolderTextField)){
-            calculateDifferenceOfTwoTextField(factor1: thirdGroup[0]!, factor2: thirdGroup[1]!, result: textFields[Constant.labelTitles[14]]!)
+        if thirdDeductionGroup.contains((textField as! TextFieldHolderTextField)){
+            calculateDifferenceOfTwoTextField(factor1: thirdDeductionGroup[0]!, factor2: thirdDeductionGroup[1]!, result: textFields[Constant.labelTitles[14]]!)
         }
+        
+        let forthDeductionGroup = [textFields[Constant.labelTitles[4]],textFields[Constant.labelTitles[6]]]
+        if forthDeductionGroup.contains((textField as! TextFieldHolderTextField)){
+            calculateDifferenceOfTwoTextField(factor1: forthDeductionGroup[0]!, factor2: forthDeductionGroup[1]!,result: textFields[Constant.labelTitles[5]]!)
+        }
+        
+
     }
     
     func createTimePicker(textField:UITextField){
@@ -412,6 +432,7 @@ class SummaryViewController: UIViewController, MenuButtonClickedProtocol,UITextF
     func countcashFinished(amount:Double) {
         let textField = textFields[Constant.labelTitles[10]]
         textField!.text = "\(amount)"
+        self.textFieldDidEndEditing(textField!)
     }
     
     //MARK: - Calculation
@@ -428,7 +449,9 @@ class SummaryViewController: UIViewController, MenuButtonClickedProtocol,UITextF
         }else if factor2text == ""{
             result.text = factor1text
         }else{
-            result.text = "\(Double(factor1text!)! + Double(factor2text!)!)"
+            
+            result.text = "\((round((Double(factor1text!)! + Double(factor2text!)!)*100))/100)"
+            print((round(Double(factor1text!)! + Double(factor2text!)!)*100))
         }
         textFieldDidEndEditing(result)
     }
@@ -445,7 +468,8 @@ class SummaryViewController: UIViewController, MenuButtonClickedProtocol,UITextF
         }else if factor2text == ""{
             result.text = factor1text
         }else{
-            result.text = "\(Double(factor1text!)! - Double(factor2text!)!)"
+            result.text = "\((round((Double(factor1text!)! - Double(factor2text!)!)*100))/100)"
+ 
         }
         textFieldDidEndEditing(result)
     }

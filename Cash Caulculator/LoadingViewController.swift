@@ -66,7 +66,7 @@ class LoadingViewController: UIViewController, firebaseLoadingFinish{
         navigationController.navigationBar.tintColor = UIColor.fillcolor
         navigationController.navigationBar.prefersLargeTitles = true
         navigationController.navigationBar.isTranslucent = false
-       // self.present(navigationController, animated: true, completion: nil)
+        self.present(navigationController, animated: true, completion: nil)
         
     }
     
